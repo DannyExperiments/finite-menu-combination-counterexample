@@ -1,0 +1,18 @@
+cff-version: "1.2.0"
+message: "If you cite this release, please cite the version-specific DOI."
+title: "A counterexample to combination for finite-menu representations"
+type: software
+authors:
+  - name: "DannyExperiments"
+doi: "10.5281/zenodo.24572493"
+version: "1.0.0"
+date-released: "2026-11-27"
+repository-code: "https://github.com/DannyExperiments/finite-menu-combination-counterexample"
+url: "https://github.com/DannyExperiments/finite-menu-combination-counterexample/releases/tag/v1.0.0"
+abstract: "A two-outcome counterexample to pointwise combination of arbitrary representations for finite menus, with a compactness corollary."
+keywords:
+  - "desirable gambles"
+  - "finite menus"
+  - "information algebras"
+  - "imprecise probability"
+  - "natural extension"

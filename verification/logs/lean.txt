@@ -1,0 +1,6 @@
+'MenuCertificate.tiltedExpectation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'MenuCertificate.crossingFormula' depends on axioms: [propext, Classical.choice, Quot.sound]
+'MenuCertificate.crossingSigns' depends on axioms: [propext, Classical.choice, Quot.sound]
+'MenuCertificate.conflictAddsToZero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'MenuCertificate.constantRejection' depends on axioms: [propext, Classical.choice, Quot.sound]
+'MenuCertificate.fixedMenuBoundary' depends on axioms: [propext, Classical.choice, Quot.sound]

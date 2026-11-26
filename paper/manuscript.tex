@@ -1,0 +1,223 @@
+\documentclass[11pt,a4paper]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage{amssymb}
+\usepackage[hmargin=1in,vmargin=.9in]{geometry}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{pdftitle={A counterexample to combination for finite-menu representations}}
+\DeclareFontShape{OT1}{cmr}{bx}{n}{<-> cmbx10}{}
+\DeclareMathSizes{8}{8}{8}{8}
+\DeclareMathSizes{9}{9}{8}{8}
+\DeclareMathSizes{10.95}{10.95}{8}{8}
+\newtheorem{theorem}{Theorem}
+\title{A counterexample to combination for finite-menu representations}
+\date{}
+\begin{document}
+\begin{abstract}
+Pointwise combination of two families of gamble cones need not
+commute with their representation by desirable finite menus.
+A two-outcome example uses a lexicographic cone and a sequence of
+ordinary strict-expectation cones converging to it in membership.
+Every cross-pair is inconsistent, while the two finite-menu assessments
+have a common coherent extension. The discrepancy disappears for
+closed membership families by a compactness corollary of the known
+finitary conjunctive representation theorem.
+\end{abstract}
+\maketitle
+
+\section{The combination question}
+
+A gamble on a finite outcome space is a real function. A coherent
+gamble cone \(D\) excludes zero, contains every nonzero nonnegative
+gamble, and is closed under positive combinations.
+For finite menus \(A\), put
+\[
+ K(D)=\{A:A\cap D\ne\varnothing\},\qquad
+ \Gamma(\mathcal F)=\bigcap_{D\in\mathcal F}K(D).
+\]
+The inconsistent gamble cone is the whole gamble space and its
+menu model contains all menus, including the empty one under the
+null convention. Let \(\operatorname{cl}_D\) and
+\(\operatorname{cl}_K\) denote the respective coherent natural
+closures, with the null result when no coherent extension exists.
+At a common label combine two families by
+\[
+ \mathcal F_1\otimes\mathcal F_2
+ =\{\operatorname{cl}_D(D_1\cup D_2):
+                         D_i\in\mathcal F_i,\ i=1,2\}.
+\]
+At different labels the individual gambles are extended to
+their union label as functions constant in the new coordinates.
+
+D\k{a}browska, Van Camp and Quaeghebeur
+\cite[Prop.~11, \S4]{smps} prove the corresponding equality
+with unrestricted menu sizes. Their conclusion asks about the
+finite-menu case. We address the combination part, using the
+specified original families and pointwise operation.
+
+\begin{theorem}
+There are nonempty families of coherent cones, one a singleton
+and the other countably infinite, such that
+\[
+ \Gamma(\mathcal F_1\otimes\mathcal F_2)
+ \ne
+ \operatorname{cl}_K\bigl(\Gamma(\mathcal F_1)\cup
+                          \Gamma(\mathcal F_2)\bigr).
+\]
+This holds on a common two-outcome domain, with a nonempty
+singleton menu witnessing the inequality.
+\end{theorem}
+
+\section{Two outcomes and incompatible cones}
+
+On outcomes \(0,1\) write \(f=(f_0,f_1)\) and
+\(E_p(f)=(1-p)f_0+pf_1\).
+Let \(p_n=1/2+1/(4n)\) for positive integers \(n\), and set
+\[
+ D_n=\{f:E_{p_n}(f)>0\}.
+\]
+Define \(L\) by lexicographic positivity of
+\((E_{1/2}(f),f_1-f_0)\). In other words, \(f\in L\) if
+\(E_{1/2}(f)>0\), or if that expectation is zero and \(f_1>f_0\).
+All these cones exclude zero and include every nonzero nonnegative
+gamble because the probability weights are positive. Positivity
+in each rule is preserved by positive combinations. Use
+\(\mathcal F_1=\{L\}\) and \(\mathcal F_2=\{D_n:n\ge1\}\).
+
+For every fixed gamble,
+\[
+ E_{p_n}(f)=E_{1/2}(f)+\frac{f_1-f_0}{4n}.
+\]
+If its first term is nonzero, it determines the sign for large
+\(n\). If it is zero, strict positivity holds exactly when the
+second term is positive. Thus membership of each fixed gamble in
+\(D_n\) eventually agrees with membership in \(L\).
+If a finite menu avoids \(L\), take one \(n\) large enough for this
+agreement for all of its elements. The menu then avoids \(D_n\)
+and does not belong to \(\Gamma(\mathcal F_2)\).
+Therefore
+\(\Gamma(\mathcal F_2)\subseteq K(L)=\Gamma(\mathcal F_1)\).
+The natural closure of the union is exactly the coherent \(K(L)\).
+
+In the other order, for each \(n\) use
+\(c_n=(1/2+p_n)/2\) and \(f_n=(c_n,c_n-1)\).
+The two expectations are
+\[
+ E_{1/2}(f_n)=\frac1{8n},\qquad
+ E_{p_n}(f_n)=-\frac1{8n}.
+\]
+So \(f_n\in L\) and \(-f_n\in D_n\).
+Any cone containing both would contain the zero gamble by
+addition. Every pairwise natural extension is thus inconsistent.
+Its menu model contains the singleton \(\{(-1,-1)\}\), which
+\(K(L)\) rejects. This proves the strict inequality.
+
+\section{Finite menus and finite families}
+
+The infinite menu \(\{-f_n:n\ge1\}\) hits every \(D_n\), since
+its \(n\)-th element belongs to \(D_n\). It avoids \(L\), as
+\(E_{1/2}(-f_n)<0\) for all \(n\). Allowing that menu breaks the
+inclusion \(\Gamma(\mathcal F_2)\subseteq K(L)\). In the
+infinitary closure, any choice \(-f_n\) from that menu conflicts
+with the corresponding singleton \(\{f_n\}\) from \(K(L)\).
+This is compatible with the infinitary Proposition~11.
+
+Finiteness of a representing family is a different assumption
+from finiteness of each menu. Earlier work describes how finite
+representations can be combined to represent the least
+compatible joint \cite[Props.~10--12]{marginal}. For the pointwise
+equality here, the finite-family case follows directly from the
+following compactness argument. Replacing an input family by
+another representation can preserve its menu assessment without
+preserving the original pairs of cones under combination.
+
+\section{A compactness corollary of known representation theory}
+
+We use the established finitary conjunctive representation
+\cite[Cor.~37 and eq.~(24)]{rep}: the natural extension of a
+finite-menu assessment is the intersection of all \(K(E)\)
+for coherent \(E\) extending it as a menu assessment.
+If no such \(E\) exists, this intersection is the null menu
+model. The following application gives a sufficient condition
+for the pointwise operation to commute.
+
+View a cone as its indicator in the product
+\(\{0,1\}^{\mathcal L}\), where \(\mathcal L\) is the gamble space.
+Coherent cones form a closed subspace: the zero and positive-gamble
+constraints are coordinate conditions, and each closure implication
+for positive combinations involves finitely many coordinates.
+Thus this subspace is compact. For finite \(A\), the condition
+\(A\cap D\ne\varnothing\) is clopen. The closure \(\overline{\mathcal F}\)
+of any nonempty family in this space has the same \(\Gamma\).
+
+For a closed family \(\mathcal H\) of coherent cones, suppose
+\(K(E)\) contains \(\Gamma(\mathcal H)\).
+If every \(D\in\mathcal H\) has a gamble outside \(E\), the clopen
+sets \(\{D:f\in D\}\) for \(f\notin E\) cover \(\mathcal H\).
+A finite subcover gives a finite menu in \(\Gamma(\mathcal H)\)
+missed by \(E\), a contradiction. Some member \(D\) is therefore
+contained in \(E\). Conversely, \(D\subseteq E\) for a member \(D\)
+implies \(K(E)\supseteq\Gamma(\mathcal H)\).
+If labels differ, the argument applies to the restriction of \(E\)
+to each label, under the same extension of gambles to the union.
+
+Apply this equivalence to the closures of both input families.
+Each combined cone model contains both input menu assessments.
+Every coherent extension of the two menu assessments contains
+the coherent natural extension of some cross-pair of cones.
+Conversely, a coherent cross-pair extension hits every menu of
+both input assessments. The coherent cones extending either
+description are the same, after taking supersets. The conjunctive
+representation theorem therefore yields
+\[
+ \Gamma(\overline{\mathcal F_1}\otimes\overline{\mathcal F_2})
+  =\operatorname{cl}_K\bigl(\Gamma(\mathcal F_1)\cup
+                            \Gamma(\mathcal F_2)\bigr).
+\]
+If all cross-pairs are inconsistent, both descriptions have no
+coherent extension and both sides are null.
+Finite families are closed in the product space.
+In the example the closure adds the lexicographic limit \(L\)
+and makes the cross-pair \((L,L)\) available.
+This result concerns closing the families \emph{before}
+combination. It follows from the prior representation theorem,
+rather than constituting a separate homomorphism theorem for
+the supplied arbitrary families.
+
+\section{Verification and disclosure}
+
+Internally reviewed, not peer reviewed. Exact rational replay
+checks the pairwise conflict formula and explicit finite-menu
+exclusions. The proof handles all real gambles and all menu
+sizes. A partial Lean 4.30.0 certificate checks the algebraic
+expectation identities, crossing signs, zero sum and rational
+menu boundary. Coherence and compactness are proved in the text.
+
+Under human direction, ChatGPT Astra 6.2 (OpenAI) generated the
+discovery proof and its research packet. OpenAI Codex independently
+reviewed the mathematics. GPT-6.2 Sol (OpenAI) checked the
+literature and prepared the manuscript, exact replay, partial Lean certificate and
+illustrations. DannyExperiments maintains the repository and
+is the preferred citation identity. No AI system is proposed
+as an author.
+
+\begin{thebibliography}{9}
+\raggedright
+\bibitem{smps}
+J. D\k{a}browska, A. Van Camp and E. Quaeghebeur,
+\emph{Sets of desirable gamble sets and their representations as
+information algebras}, SMPS (2026).
+\href{https://arthurvancamp.github.io/proceeding/smps2026/JD-SMPS2026-paper.pdf}{Author paper}.
+\bibitem{rep}
+G. de Cooman, A. Van Camp and J. De Bock,
+\emph{The logic behind desirable sets of things, and its
+filter representation}, International Journal of Approximate
+Reasoning \textbf{172} (2024), 109241.
+\href{https://doi.org/10.1016/j.ijar.2024.109241}{doi:10.1016/j.ijar.2024.109241}.
+\bibitem{marginal}
+J. D\k{a}browska, A. Van Camp and E. Quaeghebeur,
+\emph{The marginal problem for sets of desirable gambles sets
+with a finite representation}, International Journal of
+Approximate Reasoning \textbf{199} (2026), 109799.
+\href{https://doi.org/10.1016/j.ijar.2026.109799}{doi:10.1016/j.ijar.2026.109799}.
+\end{thebibliography}
+\end{document}

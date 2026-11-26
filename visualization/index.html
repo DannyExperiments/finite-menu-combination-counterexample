@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The conflicting gamble moves</title>
+<style>
+:root{color-scheme:dark;--bg:#0d1723;--panel:#162638;--ink:#f0f6fa;--muted:#b4c8d9;--line:#38546a;--mint:#83e2ce;--amber:#ffc179}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:1rem/1.55 system-ui,sans-serif}
+main{width:min(100% - 2rem,52rem);margin:2rem auto 3rem}
+h1{font-size:clamp(1.95rem,6vw,3.2rem);line-height:1.12;letter-spacing:-.035em;margin:0}
+h2{font-size:1.14rem;margin:0 0 .45rem}
+p{margin:.6rem 0}
+header p,.muted{color:var(--muted)}
+section,details{border:1px solid var(--line);border-radius:1rem;background:var(--panel);margin:1rem 0;padding:1rem}
+.range{display:flex;align-items:center;gap:.75rem;font-weight:640}
+input{width:100%;min-height:2.75rem;accent-color:var(--mint)}
+input:focus-visible{outline:3px solid var(--amber);outline-offset:3px}
+.scene{display:grid;grid-template-columns:1.1fr 1fr;gap:.75rem}
+canvas{display:block;width:100%;height:17rem;background:#101d2b;border-radius:.6rem}
+.readout{padding:.8rem;border-radius:.6rem;background:#101d2b;border:1px solid var(--line)}
+.readout dl{display:grid;grid-template-columns:1fr auto;gap:.45rem;margin:.6rem 0;font-variant-numeric:tabular-nums}
+dd{font-weight:700;margin:0}
+dd.positive{color:var(--mint)}
+dd.negative{color:var(--amber)}
+#fixed strong{color:var(--mint)}
+summary{cursor:pointer;color:var(--mint);font-weight:680}
+@media(max-width:625px){main{margin-top:1.15rem}section,details{padding:.75rem}.scene{display:flex;flex-direction:column}.readout{order:-1}.figure{width:100%}canvas{height:13.5rem}}
+</style>
+</head>
+<body>
+<main>
+<header><h1>The conflicting gamble moves</h1><p>Choose an index to compare a moving conflict certificate with one fixed two-gamble menu.</p></header>
+<section aria-labelledby="worked">
+<h2 id="worked">Probability cone D<sub>n</sub></h2>
+<label class="range" for="n">n <input id="n" type="range" min="1" max="16" value="1"><output id="pick">1</output></label>
+<div class="scene">
+<div class="figure">
+<canvas id="plane" role="img" aria-label="Three-dimensional graph of the expectation c minus p, with positive and negative sample values"></canvas>
+<label class="range" for="angle">Rotate <input id="angle" type="range" min="0" max="360" value="22" aria-label="Rotation angle"></label>
+<p class="muted">The plane uses c and p between 1/2 and 3/4. Height is the expectation c − p. The diagonal has expectation zero.</p>
+</div>
+<div class="readout" aria-live="polite">
+<p id="gamble">fₙ = (5/8, −3/8)</p>
+<dl>
+<dt>pₙ</dt><dd id="p">3/4</dd>
+<dt>E at p = 1/2</dt><dd class="positive" id="left">+1/8</dd>
+<dt>E at p = pₙ</dt><dd class="negative" id="right">−1/8</dd>
+</dl>
+<p>The lexicographic cone L accepts fₙ and Dₙ accepts −fₙ. Their union forces zero.</p>
+</div>
+</div>
+<p id="fixed"><strong>Fixed menu:</strong> { (−17/32, 15/32), (−1, −1) } misses L and hits D₁.</p>
+</section>
+<details>
+<summary>Why menus and cone families behave differently</summary>
+<p>For each fixed gamble, eventually Dₙ agrees with L. Any finite list that misses L must therefore miss some Dₙ. The fixed menu above does that for every n from 8 onward.</p>
+<p>There is still a different conflict at each n. The infinite menu of all negated conflict gambles hits every Dₙ and misses L. It would be available in the infinitary version of the problem. The paper proves the general statements.</p>
+</details>
+</main>
+<script>
+"use strict";
+const $=id=>document.getElementById(id);
+const canvas=$("plane"),ctx=canvas.getContext("2d");
+function paint(){
+  const {width,height}=canvas.getBoundingClientRect(),density=Math.min(devicePixelRatio||1,2);
+  canvas.width=Math.round(width*density);canvas.height=Math.round(height*density);ctx.scale(density,density);
+  const angle=Number($("angle").value)*Math.PI/180,pitch=.44,s=Math.min(width,height)*.39;
+  function p(c,prob){
+    let x=(c-.5)*1.3,y=.76*(c-prob),z=(prob-.5)*1.3;
+    [x,z]=[x*Math.cos(angle)+z*Math.sin(angle),-x*Math.sin(angle)+z*Math.cos(angle)];
+    [y,z]=[y*Math.cos(pitch)-z*Math.sin(pitch),y*Math.sin(pitch)+z*Math.cos(pitch)];
+    const k=5/(5-z);
+    return [width/2+x*s*k,height/2-y*s*k];
+  }
+  function line(a,b,color,weight){
+    ctx.strokeStyle=color;ctx.lineWidth=weight;ctx.beginPath();
+    ctx.moveTo(...p(...a));ctx.lineTo(...p(...b));ctx.stroke();
+  }
+  for(let i=0;i<5;i++){
+    line([0,i/4],[1,i/4],"#31495e",2);
+    line([i/4,0],[i/4,1],"#31495e",2);
+  }
+  line([0,0],[1,1],"#789aae",2);
+  const n=Number($("n").value),c=1/(2*n);
+  line([c,0],[c,1/n],"#f0f6fa",3);
+  for(const [prob,color] of [[0,"#83e2ce"],[1/n,"#ffc179"]]){
+    ctx.beginPath();ctx.arc(...p(c,prob),5,0,Math.PI*2);ctx.fillStyle=color;ctx.fill();
+    ctx.lineWidth=1;ctx.strokeStyle="#0d1723";ctx.stroke();
+  }
+}
+function refresh(){
+  const n=Number($("n").value),c=4*n+1,d=8*n;
+  $("pick").textContent=n;
+  $("gamble").textContent="fₙ = ("+c+"/"+d+", −"+(d-c)+"/"+d+")";
+  $("p").textContent=(2*n+1)+"/"+(4*n);
+  $("left").textContent="+1/"+d;$("right").textContent="−1/"+d;
+  $("fixed").innerHTML="<strong>Fixed menu:</strong> { (−17/32, 15/32), (−1, −1) } misses L and "+
+    (n<8?"hits D<sub>"+n+"</sub> by a strictly positive expectation.":"misses D<sub>"+n+"</sub> as well.");
+  paint();
+}
+$("angle").addEventListener("input",paint);$("n").addEventListener("input",refresh);
+new ResizeObserver(paint).observe(canvas);refresh();
+</script>
+</body>
+</html>

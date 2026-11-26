@@ -1,0 +1,29 @@
+{
+  "title": "A counterexample to combination for finite-menu representations",
+  "upload_type": "software",
+  "creators": [
+    {
+      "name": "DannyExperiments"
+    }
+  ],
+  "keywords": [
+    "desirable gambles",
+    "finite menus",
+    "information algebras",
+    "imprecise probability",
+    "natural extension"
+  ],
+  "description": "<p>Pointwise combination of arbitrary representing families of coherent gamble cones does not commute with their finite-menu representation. A two-outcome counterexample uses one lexicographic cone and a countable family of strict-expectation cones that approach it in pointwise membership.</p><p>Each probability cone accepts the negative of a moving gamble accepted by the lexicographic cone, so every cross-pair is inconsistent. A finite menu missed by the limit is missed simultaneously by some probability cone. The original finite-menu assessments therefore admit a common coherent extension. The nonempty negative singleton separates the two combinations.</p><p>The original source's positive Proposition 11 allows infinite menus, including the simultaneous witness that is unavailable here. A compactness corollary of the established finitary conjunctive representation theorem shows that closing the input families before combination restores the equality. Exact rational replay and a rotating offline explorer accompany the proof. The partial Lean 4.30.0 check verifies algebraic identities and rational signs. Internally reviewed, not peer reviewed.</p><p>Under human direction, ChatGPT Astra 6.2 (OpenAI) generated the discovery proof and its research packet. OpenAI Codex independently checked the mathematics. GPT-6.2 Sol (OpenAI) checked the literature and prepared the manuscript, exact replay, partial Lean certificate and illustrations. DannyExperiments maintains the repository and is the preferred citation identity. No AI system is proposed as an author.</p><p>Release v1.0.0. https://github.com/DannyExperiments/finite-menu-combination-counterexample/releases/tag/v1.0.0</p>",
+  "license": "other-closed",
+  "notes": "All rights reserved. Publicly downloadable files are supplied without a repository-wide reuse license.",
+  "publication_date": "2026-11-27",
+  "version": "1.0.0",
+  "access_right": "open",
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/DannyExperiments/finite-menu-combination-counterexample/releases/tag/v1.0.0",
+      "relation": "isSupplementTo",
+      "resource_type": "software"
+    }
+  ]
+}
